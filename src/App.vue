@@ -125,8 +125,7 @@ const prosData: { [key: number]: { text: string } } = {
 }
 
 input[type='range']::-webkit-slider-runnable-track,
-input[type='range']::-moz-range-track,
-input[type='range']::-ms-track {
+input[type='range']::-moz-range-track {
 	height: 0.6em;
 	border-radius: 1em;
 	background: linear-gradient(
@@ -137,8 +136,7 @@ input[type='range']::-ms-track {
 }
 
 input[type='range']::-webkit-slider-thumb,
-input[type='range']::-moz-range-thumb,
-input[type='range']::-ms-thumb {
+input[type='range']::-moz-range-thumb {
 	-webkit-appearance: none;
 	appearance: none;
 	background-color: hsl(174, 86%, 45%);
