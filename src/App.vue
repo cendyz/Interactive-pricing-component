@@ -1,5 +1,5 @@
 <template>
-	<main class="flex flex-col py-[7em] px-[1em]">
+	<main class="flex flex-col py-[7em] px-[1em] container">
 		<div class="relative flex flex-col gap-y-[.6em] text-center">
 			<h1 class="font-manrope800 relative z-10 text-[1.2rem]">
 				Simple, traffic-based pricing
@@ -14,10 +14,18 @@
 				class="absolute left-1/2 top-1/2 -translate-x-[50%] -translate-y-[50%]" />
 		</div>
 		<div
-			class="flex flex-col items-center mt-[5em] p-[1.7em] bg-white rounded-xl rounded-b-none border-b border-b-gray-slate-100">
-			<h2 class="uppercase text-grayishBlue font-manrope600 text-[.8rem]">
-				100k pageviews
-			</h2>
+			class="flex flex-col items-center mt-[5em] p-[1.7em] bg-white rounded-xl rounded-b-none border-b border-b-gray-slate-100 md:w-[450px] md:mx-auto md:p-[2.5em]">
+			<div
+				class="flex justify-center md:justify-between items-center w-full">
+				<h2
+					class="uppercase text-grayishBlue font-manrope600 text-[.8rem]">
+					100k pageviews
+				</h2>
+				<div class="gap-x-[.5em] items-center hidden md:flex">
+					<p class="text-[2rem] font-manrope800">{{ pageviews }}.00</p>
+					<p class="text-grayishBlue">/ month</p>
+				</div>
+			</div>
 			<input
 				type="range"
 				id="amount"
@@ -26,7 +34,7 @@
 				max="32.00"
 				v-model="data.default"
 				@input="updateTrackBackground" />
-			<div class="flex gap-x-[.5em] items-center">
+			<div class="flex gap-x-[.5em] items-center md:hidden">
 				<p class="text-[2rem] font-manrope800">{{ pageviews }}.00</p>
 				<p class="text-grayishBlue">/ month</p>
 			</div>
@@ -37,34 +45,34 @@
 				</p>
 				<button
 					type="button"
-					class="py-[.8em] px-[1.5em] bg-lightGrayishBlue-toggleBackground rounded-3xl mx-[.7em] relative"
+					class="py-[.8em] px-[1.5em] bg-lightGrayishBlue-toggleBackground rounded-3xl mx-[.7em] relative transition-colors duration-200 hover:bg-softCyan"
 					@click="data.toggle = !data.toggle">
 					<span
-						:class="[
-							'absolute top-[15.6%] left-[8%] w-[17px] h-[17px] bg-white rounded-full btnToggle',
-							{ 'left-[56%]': data.toggle },
-						]"></span>
+						class="absolute top-[15.6%] left-[8%] w-[17px] h-[17px] bg-white rounded-full btnToggle"
+						:style="{ left: data.toggle ? '56%' : '8%' }"></span>
 				</button>
 				<p
-					class="capitalize text-[.8rem] text-grayishBlue relative after:content-['-25%'] after:absolute after:top-1/2 after:translate-y-[-50%] after:right-[-55%] after:text-lightRed after:bg-lightGrayishRed after:text-[.6rem] font-manrope600 after:px-[.7em] after:py-[.2em] after:rounded-2xl">
-					yearly billing
+					class="text-[.8rem] text-grayishBlue relative after:content-['-25%'] after:absolute after:top-1/2 after:translate-y-[-50%] after:right-[-55%] after:text-lightRed after:bg-lightGrayishRed after:text-[.6rem] font-manrope600 after:px-[.7em] after:py-[.2em] after:rounded-2xl md:after:right-[-110%] discount">
+					Yearly Billing
 				</p>
 			</div>
 		</div>
 		<div
-			class="flex flex-col bg-white p-[1.7em] items-center gap-y-[.3em]">
-			<div
-				class="flex items-center gap-x-[1.1em]"
-				v-for="item in prosData"
-				:key="nanoid()">
-				<img :src="check" alt="" />
-				<p class="text-grayishBlue text-[.8rem] font-manrope600">
-					{{ item.text }}
-				</p>
+			class="flex flex-col bg-white p-[1.7em] items-center gap-y-[.3em] md:w-[450px] md:mx-auto md:p-[2.5em] md:flex-row md: justify-between md:items-center">
+			<div class="">
+				<div
+					class="flex items-center gap-x-[1.1em]"
+					v-for="item in prosData"
+					:key="nanoid()">
+					<img :src="check" alt="" />
+					<p class="text-grayishBlue text-[.8rem] font-manrope600">
+						{{ item.text }}
+					</p>
+				</div>
 			</div>
 			<button
 				type="button"
-				class="py-[.8em] px-[3.5em] mt-[2em] rounded-3xl bg-darkDesaturatedBlue text-paleBlue font-manrope600 text-[.8rem]">
+				class="py-[.8em] px-[3.5em] mt-[2em] rounded-3xl bg-darkDesaturatedBlue text-paleBlue font-manrope600 text-[.8rem] md:mt-0 transition-colors hover:text-white">
 				Start my trial
 			</button>
 		</div>
@@ -97,10 +105,10 @@ const prosData: { [key: number]: { text: string } } = {
 	0: {
 		text: 'Unlimited websites',
 	},
-	2: {
+	1: {
 		text: '100% data ownership',
 	},
-	3: {
+	2: {
 		text: 'Email reports',
 	},
 }
@@ -149,6 +157,14 @@ const prosData: { [key: number]: { text: string } } = {
 	&:hover::-webkit-slider-thumb,
 	&:hover::-moz-range-thumb {
 		background-color: rgb(106, 231, 218);
+	}
+}
+
+@media (min-width: 769px) {
+	.discount {
+		&::after {
+			content: '25% discount';
+		}
 	}
 }
 </style>
