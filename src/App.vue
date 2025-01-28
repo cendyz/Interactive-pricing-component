@@ -1,5 +1,7 @@
 <template>
-	<main class="flex flex-col py-[7em] px-[1em] container">
+	<div
+		class="absolute top-0 left-0 w-full h-[73%] bg-paleBlue rounded-bl-[10em] opacity-20"></div>
+	<main class="flex flex-col py-[7em] px-[1em] container relative">
 		<div class="relative flex flex-col gap-y-[.6em] text-center">
 			<h1 class="font-manrope800 relative z-10 text-[1.2rem]">
 				Simple, traffic-based pricing
@@ -14,7 +16,7 @@
 				class="absolute left-1/2 top-1/2 -translate-x-[50%] -translate-y-[50%]" />
 		</div>
 		<div
-			class="flex flex-col items-center mt-[5em] p-[1.7em] bg-white rounded-xl rounded-b-none border-b border-b-gray-slate-100 md:w-[450px] md:mx-auto md:p-[2.5em]">
+			class="flex flex-col items-center mt-[5em] p-[1.7em] bg-white rounded-xl rounded-b-none border-b border-b-gray-slate-100 md:w-[28em] md:mx-auto md:p-[2.5em] downShadow">
 			<div
 				class="flex justify-center md:justify-between items-center w-full">
 				<h2
@@ -48,7 +50,7 @@
 					class="py-[.8em] px-[1.5em] bg-lightGrayishBlue-toggleBackground rounded-3xl mx-[.7em] relative transition-colors duration-200 hover:bg-softCyan"
 					@click="data.toggle = !data.toggle">
 					<span
-						class="absolute top-[15.6%] left-[8%] w-[17px] h-[17px] bg-white rounded-full btnToggle"
+						class="absolute top-[15.6%] left-[8%] w-[1.1em] h-[1.1em] bg-white rounded-full btnToggle"
 						:style="{ left: data.toggle ? '56%' : '8%' }"></span>
 				</button>
 				<p
@@ -58,7 +60,7 @@
 			</div>
 		</div>
 		<div
-			class="flex flex-col bg-white p-[1.7em] items-center gap-y-[.3em] md:w-[450px] md:mx-auto md:p-[2.5em] md:flex-row md: justify-between md:items-center">
+			class="flex flex-col bg-white p-[1.7em] items-center gap-y-[.3em] md:w-[28em] md:mx-auto md:p-[2.5em] md:flex-row md: justify-between md:items-center downShadow">
 			<div class="">
 				<div
 					class="flex items-center gap-x-[1.1em]"
@@ -158,6 +160,10 @@ const prosData: { [key: number]: { text: string } } = {
 	&:hover::-moz-range-thumb {
 		background-color: rgb(106, 231, 218);
 	}
+}
+
+.downShadow {
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 @media (min-width: 769px) {
