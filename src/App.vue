@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="absolute top-0 left-0 w-full h-[73%] bg-paleBlue rounded-bl-[10em] opacity-20"></div>
+		class="absolute top-0 left-0 w-full h-[26em] bg-paleBlue rounded-bl-[7em] opacity-20"></div>
 	<main class="flex flex-col py-[7em] px-[1em] container relative">
 		<div class="relative flex flex-col gap-y-[.6em] text-center">
 			<h1 class="font-manrope800 relative z-10 text-[1.2rem]">
