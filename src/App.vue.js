@@ -23,7 +23,7 @@ var data = (0, vue_1.reactive)({
 });
 var pageviews = (0, vue_1.computed)(function () { return "$".concat(data.default); });
 var updateTrackBackground = function () {
-    var actualValue = ((data.default - data.min) / (data.max - data.min)) * 100;
+    var actualValue = data.default / data.max * 100;
     document.documentElement.style.setProperty('--slider-fill', "".concat(actualValue, "%"));
 };
 var prosData = {
